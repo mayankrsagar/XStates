@@ -12,6 +12,7 @@ const LocationSelector = () => {
   const [valueCountry, setValueCountry] = useState("Select Country");
   const [valueState, setValueState] = useState("Select State");
   const [valueCity, setValueCity] = useState("Select City");
+  const [showAddress, setShowAddress]=useState(false);
 
   const [loadingCountry, setLoadingCountry] = useState(true);
   const [loadingState, setLoadingState] = useState(false);
@@ -82,6 +83,7 @@ const LocationSelector = () => {
         setValueCountry(e.target.value);
         setValueState("Select State");
         setValueCity("Select City");
+        setShowAddress(false)
       }}>
         <option value="Select Country" disabled>Select Country</option>
         {country.map(ele => (
@@ -92,6 +94,7 @@ const LocationSelector = () => {
       <select name="state" id="state" value={valueState} onChange={(e) => {
         setValueState(e.target.value);
         setValueCity("Select City");
+        setShowAddress(false)
       }}>
         <option value="Select State" disabled>Select State</option>
         {state.map(ele => (
@@ -99,7 +102,7 @@ const LocationSelector = () => {
         ))}
       </select>
 
-      <select name="city" id="city" value={valueCity} onChange={(e) => setValueCity(e.target.value)}>
+      <select name="city" id="city" value={valueCity} onChange={(e) =>{ setValueCity(e.target.value); setShowAddress(true)}}>
         <option value="Select City" disabled>Select City</option>
         
         {city.map(ele => (
@@ -107,6 +110,11 @@ const LocationSelector = () => {
         ))}
       </select>
       </div>
+      {showAddress && (
+  <h1 style={{ textAlign: "center", marginTop: "2rem", }}>
+    {`You Selected ${valueCity}, ${valueState}, ${valueCountry}`}
+  </h1>
+)}
     </React.Fragment>
   );
 };
