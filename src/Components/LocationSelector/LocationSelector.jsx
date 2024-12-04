@@ -112,7 +112,8 @@ const LocationSelector = () => {
       </div>
       {showAddress && (
   <h1 style={{ textAlign: "center", marginTop: "2rem", }}>
-    {`You Selected ${valueCity}, ${valueState}, ${valueCountry}`}
+    {`You selected ${valueCity}, ${valueState}, ${valueCountry}`}
+    
   </h1>
 )}
     </React.Fragment>
